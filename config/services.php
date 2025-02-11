@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'namecheap' => [
+        'api_key' => env('NAMECHEAP_API_KEY', "NAMECHEAP_API_KEY_IS_MISSING"),
+    ],
+
 ];
