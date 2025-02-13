@@ -1,35 +1,35 @@
 @extends('layouts.vertical', ['title' => 'Domains'])
 
 @section('content')
-
-<div class="container-fluid">
-    <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
-        <div class="flex-grow-1">
-            <h4 class="fs-18 fw-semibold m-0">Domains</h4>
+    <div class="container-fluid">
+        <div class="d-flex align-items-sm-center flex-sm-row flex-column py-3">
+            <div class="flex-grow-1">
+                <h4 class="fs-18 fw-semibold m-0">Domains</h4>
+            </div>
         </div>
-    </div>
 
-    <!-- start row -->
-    <div class="row">
-        <div class="col-md-12 col-xl-7">
-            <div class="card">
-                <div class="card-header">
-                    <div class="row mb-4 align-items-center">
-                        <h1>Domain Check Results</h1>
+        <div class="row">
+            <div class="col-md-12 col-xl-7">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center mb-4">
+                            <h1>Domain Check Results</h1>
 
-                        @if (isset($error))
-                        <div class="alert alert-danger">{{ $error }}</div>
-                        @endif
-
-                        <ul>
-                            @foreach ($domains as $domain)
-                            <li>{{ $domain['domain'] }}: {{ $domain['available'] ? 'Available' : 'Unavailable' }}</li>
-                            @endforeach
-                        </ul>
+                            <ul>
+                                @foreach ($domains as $domain)
+                                    <li style="padding-bottom: 0.3rem; margin-left: 1rem;">
+                                        {{ $domain['domain'] }}: {{ $domain['available'] ? 'Available' : 'Unavailable' }}
+                                        @if ($domain['available'])
+                                            <a href="{{ route('domain.register.show', ['domain' => $domain['domain']]) }}"
+                                                class="btn btn-sm btn-success" style="padding-left: 0.3rem;">Register</a>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- container-fluid -->
-
-    @endsection
+    </div>
+@endsection

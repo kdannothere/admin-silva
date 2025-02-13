@@ -16,6 +16,16 @@
                         <div class="row align-items-center mb-4">
                             <h5 class="card-title mb-3 text-black">Register a new domain</h5>
 
+                            @if (session('error'))
+                                {{-- Check for session error message --}}
+                                <div class="alert alert-danger">{{ session('error') }}</div>
+                            @endif
+
+                            @if (session('success'))
+                                {{-- Check for session success message --}}
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
+
                             <div>
                                 <form action="{{ route('domains') }}" method="GET">
                                     <input type="text" class="form-control mb-2" name="domain" id="domain"
